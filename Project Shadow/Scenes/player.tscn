@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwlj5jn83dv3q"]
+[gd_scene load_steps=9 format=3 uid="uid://dwlj5jn83dv3q"]
 
 [ext_resource type="Texture2D" uid="uid://1xa3ihev6x7n" path="res://assets/knight.png" id="1_ew1un"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_j6b0a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6rokn"]
 atlas = ExtResource("1_ew1un")
@@ -41,7 +42,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_5vacs"]
 radius = 4.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("dash_timer", "dash_again_timer")]
+script = ExtResource("1_j6b0a")
+dash_timer = NodePath("dash_timer")
+dash_again_timer = NodePath("dash_again")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_eq360")
@@ -52,3 +56,11 @@ frame_progress = 0.108531
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_5vacs")
+
+[node name="dash_again" type="Timer" parent="."]
+
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.4
+
+[connection signal="timeout" from="dash_again" to="." method="_on_dash_again_timeout"]
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
