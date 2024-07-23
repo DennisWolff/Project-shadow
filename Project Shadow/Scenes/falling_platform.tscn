@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://03aja7l0do7y"]
+
+[ext_resource type="Script" path="res://scripts/Falling_Platform.gd" id="1_evru2"]
+[ext_resource type="Texture2D" uid="uid://csxw0pt1d24mh" path="res://assets/assets/Mossy - FloatingPlatforms.png" id="2_y736b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkkl1"]
+size = Vector2(76, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3lxd"]
+size = Vector2(76, 3)
+
+[node name="Falling_Platform" type="RigidBody2D"]
+script = ExtResource("1_evru2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_y736b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_mkkl1")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_w3lxd")
+
+[node name="Timer" type="Timer" parent="."]

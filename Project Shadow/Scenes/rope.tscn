@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://583grcau070m"]
+
+[ext_resource type="Script" path="res://scripts/Rope.gd" id="1_w7ueq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_em5dk"]
+radius = 3.87
+height = 270.0
+
+[node name="Rope" type="RigidBody2D"]
+script = ExtResource("1_w7ueq")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(0, 27.8151)
+scale = Vector2(1, 6.86784)
+points = PackedVector2Array(-1, 1, -1, 40)
+width = 4.0
+default_color = Color(0.580392, 0.290196, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 168)
+shape = SubResource("CapsuleShape2D_em5dk")
