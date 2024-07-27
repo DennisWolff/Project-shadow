@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dwlj5jn83dv3q"]
 
-[ext_resource type="Texture2D" uid="uid://1xa3ihev6x7n" path="res://assets/sprites/knight.png" id="1_ew1un"]
+[ext_resource type="Texture2D" uid="uid://1xa3ihev6x7n" path="res://assets/knight.png" id="1_ew1un"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jv112"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf26k"]
