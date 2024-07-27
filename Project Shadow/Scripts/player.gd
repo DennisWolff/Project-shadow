@@ -2,15 +2,14 @@ extends CharacterBody2D
 class_name Player
 
 
+@onready var health_bar = $"../CanvasLayer/HealthBar"
 @onready var dash_timer = $dash_timer
 @onready var dash_again_timer = $dash_again_timer
 @export var SPEED := 160
 @export var JUMP_VELOCITY := -300.0
 @export var DASH_SPEED := 500.0
 @export var DASH_DURATION := 0.3
-
 @export var max_health := 100
-var current_health := max_health
 var inventory := {}
 
 const PUSH_FORCE := 150.0
@@ -24,8 +23,16 @@ var can_dash = true
 func _ready():
 	inventory = {"herb": 0, "healing_potion": 0 }
 	Checkpointmanager.player = self
+	
+	
 
+func _health(delta):
+	health_bar.value = max_health
+
+#Movement
 func _physics_process(delta):
+	_health(delta)
+	
 	# Add the gravity.
 	if not is_on_floor() and not dashing:
 		velocity.y += gravity * delta
@@ -78,10 +85,10 @@ func _on_dash_again_timer_timeout():
 	can_dash = true
 
 func take_damage(damage_amount):
-	current_health -= damage_amount
-	if current_health <= 0:
+	max_health -= damage_amount
+	if max_health <= 0:
 		die()
-		current_health =max_health
+		max_health += 100
 	
 func die():
 	Checkpointmanager.respawn_player()

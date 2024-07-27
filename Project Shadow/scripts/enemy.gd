@@ -39,4 +39,4 @@ func _on_detection_area_body_exited(body):
 
 func _on_area_2d_area_entered(area): # hitbox
 	if area.get_parent() is Player:
-		area.get_parent().take_damage(20)
+		area.get_parent().take_damage(25)
