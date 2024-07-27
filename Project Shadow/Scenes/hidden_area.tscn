@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cssksx2qdntxp"]
+
+[ext_resource type="Texture2D" uid="uid://diqabynpxhuc2" path="res://assets/sprites/Screenshot_14.png" id="2_efcsw"]
+
+[sub_resource type="GDScript" id="GDScript_e8paj"]
+script/source = "extends Node2D
+
+@onready var hidden_sprite = $Sprite2D
+@onready var detection_area = $Area2D
+
+func _ready():
+	hidden_sprite.visible = true
+	
+func _on_area_2d_body_entered(body):
+	if body is Player:  # Assuming your player script has class_name Player
+		hidden_sprite.visible = false
+
+
+func _on_area_2d_body_exited(body):
+	if body is Player:  # Assuming your player script has class_name Player
+		hidden_sprite.visible = true
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xx7x"]
+size = Vector2(140, 96)
+
+[node name="HiddenArea" type="Node2D"]
+script = SubResource("GDScript_e8paj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_6xx7x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0729547, 0.0889713)
+texture = ExtResource("2_efcsw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://dl8h3nv5yuhw2"]
+
+[ext_resource type="Texture2D" uid="uid://dn4bhi20hns84" path="res://assets/assets/Abyss-TileSet.png" id="1_ak63p"]
+[ext_resource type="Script" path="res://scripts/falling_spikes.gd" id="1_pi1ev"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jemv5"]
+texture = ExtResource("1_ak63p")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0 = 0
+6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:0/0/physics_layer_0/angular_velocity = 0.0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_fu53l"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_jemv5")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npwqi"]
+size = Vector2(29, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08qw4"]
+size = Vector2(29, 94)
+
+[node name="FallingSpikes" type="Node2D"]
+rotation = 3.14159
+script = ExtResource("1_pi1ev")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_fu53l")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 327680, 0, 65535, 327680, 0)
+
+[node name="Hitbox" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.5, 6.5)
+shape = SubResource("RectangleShape2D_npwqi")
+
+[node name="PlayerDetect" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect"]
+position = Vector2(0.499993, -43)
+shape = SubResource("RectangleShape2D_08qw4")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="PlayerDetect" to="." method="_on_player_detect_area_entered"]

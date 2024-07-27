@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://csurdvm3o7ahi"]
+
+[ext_resource type="Script" path="res://scripts/Herb.gd" id="1_xqfw6"]
+[ext_resource type="Texture2D" uid="uid://d1vab5bdic1kl" path="res://assets/sprites/apple-pixel-art-gaming-item-game-pixel-fruit_158677-589.png" id="2_j4bvb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ww3s"]
+size = Vector2(22, 18)
+
+[node name="Herb" type="Node2D"]
+script = ExtResource("1_xqfw6")
+
+[node name="area" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="area"]
+position = Vector2(0, -6)
+scale = Vector2(0.0351438, 0.028754)
+texture = ExtResource("2_j4bvb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_7ww3s")
+
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
