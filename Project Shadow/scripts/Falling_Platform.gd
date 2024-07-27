@@ -3,7 +3,7 @@ class_name FallingPlatform
 @export var fall_delay: float = 0.6  # Delay before the platform falls
 @export var fall_speed: float = 400  # Speed at which the platform falls
 @export var disappear_delay: float = 0.5  # Delay before the platform disappears
-@export var reappear_delay: float = 2.0  # Delay before the platform reappears
+@export var reappear_delay: float = 1.0  # Delay before the platform reappears
 
 @onready var timer = $Timer
 @onready var area = $Area2D

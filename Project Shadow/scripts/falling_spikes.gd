@@ -21,7 +21,7 @@ func _on_player_detect_area_entered(area):
 		fall()
 		
 func fall():
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.3).timeout
 	current_speed = speed 
 	await get_tree().create_timer(5).timeout
 	reset_spike()

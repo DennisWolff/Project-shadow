@@ -2,4 +2,4 @@ extends AnimatableBody2D
 
 
 func _ready():
-	$AnimationPlayer.play("move")
+	$AnimationPlayer.play("Move")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://03aja7l0do7y"]
+[gd_scene load_steps=8 format=3 uid="uid://03aja7l0do7y"]
 
 [ext_resource type="Script" path="res://scripts/Falling_Platform.gd" id="1_evru2"]
+[ext_resource type="Texture2D" uid="uid://djpo8g4ooqc22" path="res://assets/sprites/platforms.png" id="2_5dlo6"]
 [ext_resource type="Texture2D" uid="uid://csxw0pt1d24mh" path="res://assets/assets/Mossy - FloatingPlatforms.png" id="2_y736b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkkl1"]
@@ -9,7 +10,59 @@ size = Vector2(76, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3lxd"]
 size = Vector2(76, 3)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ug4xm"]
+texture = ExtResource("2_5dlo6")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_0wrg4"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ug4xm")
+
 [node name="Falling_Platform" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_evru2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -17,7 +70,6 @@ scale = Vector2(0.04, 0.04)
 texture = ExtResource("2_y736b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_mkkl1")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -27,3 +79,7 @@ position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_w3lxd")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_0wrg4")
+format = 2
