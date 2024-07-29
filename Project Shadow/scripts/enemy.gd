@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed := 2000.0
 @export var direction = 1
 var player_chase = false
-var player :Player
+var player : Player
 @onready var ray_cast_left = $RayCastLeft
 @onready var ray_cast_right = $RayCastRight
 

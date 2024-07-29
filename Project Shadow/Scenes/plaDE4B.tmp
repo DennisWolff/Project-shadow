@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwlj5jn83dv3q"]
+[gd_scene load_steps=11 format=3 uid="uid://dwlj5jn83dv3q"]
 
 [ext_resource type="Texture2D" uid="uid://1xa3ihev6x7n" path="res://assets/knight.png" id="1_ew1un"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jv112"]
-[ext_resource type="Script" path="res://scripts/shadow_recharge.gd" id="3_eivs6"]
+[ext_resource type="Script" path="res://Scenes/shadow_recharge.gd" id="3_eivs6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf26k"]
 size = Vector2(11, 15)
@@ -46,13 +46,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_5vacs"]
 radius = 4.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7a0k"]
-bg_color = Color(1, 1, 1, 0.466667)
-corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hm6dc"]
-bg_color = Color(1.73271e-06, 0.555946, 0.662033, 1)
-
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 19
 collision_mask = 19
@@ -81,14 +74,11 @@ shape = SubResource("CircleShape2D_5vacs")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="shadow_recharge" type="ProgressBar" parent="."]
-offset_left = -5.0
-offset_top = -9.0
-offset_right = 95.0
-offset_bottom = 1.0
+offset_left = -6.0
+offset_top = -12.0
+offset_right = 94.0
+offset_bottom = 28.0
 scale = Vector2(0.1, 0.1)
-theme_override_styles/background = SubResource("StyleBoxFlat_n7a0k")
-theme_override_styles/fill = SubResource("StyleBoxFlat_hm6dc")
-show_percentage = false
 script = ExtResource("3_eivs6")
 
 [node name="recharge" type="Timer" parent="."]

@@ -4,8 +4,7 @@ extends StaticBody2D
 @export var transparent: Color = Color(1, 1, 1, 0.5)
 @export var reset: Color = Color(1, 1, 1, 1)
 @onready var tile_map: TileMap = $Secret
-
-
+@onready var recharge : Recharge
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,14 +23,11 @@ func _process(delta):
 			ability_cooldown.start(10)
 			print("start cooldown")
 	
-
-
 func stop_timer():
 	if timer.is_stopped():
 		print("Timer is already stopped.")
 	else:
 		timer.stop()
-
 
 func _on_area_2d_body_exited(body):
 	print("Exit")
@@ -39,10 +35,6 @@ func _on_area_2d_body_exited(body):
 		tile_map.modulate = reset
 		tile_map.tile_set.set_physics_layer_collision_layer(0,1)
 		tile_map.tile_set.set_physics_layer_collision_mask(0,1)
-		
-		
-
-
 
 func _on_area_2d_body_entered(body):
 	print("enter")
@@ -50,14 +42,11 @@ func _on_area_2d_body_entered(body):
 		tile_map.modulate = transparent
 		print("test")
 	
-	
-
 func _on_timer_timeout():
 	print("Timer stopped")
 	stop_timer()
 	#collision_layer = 1  
 	#collision_mask = 1 
-
 
 func _on_ability_cooldown_timeout():
 	print("cooldown stopped")

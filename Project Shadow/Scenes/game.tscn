@@ -14,8 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://d0bpeljen7ap" path="res://assets/sprites/Overworld-TileSet-Sheet.png" id="12_wmush"]
 [ext_resource type="PackedScene" uid="uid://c7kb6qwljtuj5" path="res://Scenes/enemy.tscn" id="13_ttuct"]
 [ext_resource type="PackedScene" uid="uid://csurdvm3o7ahi" path="res://Scenes/herb.tscn" id="14_dxtti"]
-[ext_resource type="Script" path="res://Scenes/HealthBar.gd" id="16_d1ewc"]
-[ext_resource type="Script" path="res://Scenes/ShadowAbility.gd" id="17_n2ci8"]
+[ext_resource type="Script" path="res://scripts/HealthBar.gd" id="16_d1ewc"]
+[ext_resource type="Script" path="res://scripts/ShadowAbility.gd" id="17_n2ci8"]
 [ext_resource type="Texture2D" uid="uid://bct1h54err4vy" path="res://assets/sprites/world_tileset.png" id="18_24w1n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m3qlr"]
